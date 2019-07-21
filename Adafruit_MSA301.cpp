@@ -2,7 +2,7 @@
 /*!
     @file     Adafruit_MSA301.cpp
     @author   Limor Fried (Adafruit Industries)
-    @license  MIT (see license.txt)
+    @license  BSD (see license.txt)
 
     This is a library for the Adafruit MSA301 Accel breakout board
     ----> https://www.adafruit.com
