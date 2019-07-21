@@ -232,16 +232,21 @@ void Adafruit_MSA301::read(void) {
   y = buffer[2]; y |= buffer[3] << 8;
   z = buffer[4]; z |= buffer[5] << 8;
 
-  msa301_range_t range = getRange();
-  float divider = 3.9; // 3.9mg in 2g
-  if (range == MSA301_RANGE_16_G) divider = 31.3 * 1000.0;
-  if (range == MSA301_RANGE_8_G) divider = 15.6 * 1000.0;
-  if (range == MSA301_RANGE_4_G) divider = 7.8 * 1000.0;
-  if (range == MSA301_RANGE_2_G) divider = 3.9 * 1000.0;
+  // 14 bits of data in 16 bit range
+  x >>= 2;
+  y >>= 2;
+  z >>= 2;
 
-  x_g = (float)x / divider;
-  y_g = (float)y / divider;
-  z_g = (float)z / divider;
+  msa301_range_t range = getRange();
+  float scale = 1;
+  if (range == MSA301_RANGE_16_G) scale = 512;
+  if (range == MSA301_RANGE_8_G) scale = 1024;
+  if (range == MSA301_RANGE_4_G) scale = 2048;
+  if (range == MSA301_RANGE_2_G) scale = 4096;
+
+  x_g = (float)x / scale;
+  y_g = (float)y / scale;
+  z_g = (float)z / scale;
 }
 
 
