@@ -45,7 +45,7 @@ void setup(void) {
 
   //msa.setBandwidth(MSA301_BANDWIDTH_31_25_HZ);
   Serial.print("Bandwidth set to: ");
-  switch (msa.getDataRate()) {
+  switch (msa.getBandwidth()) {
     case MSA301_BANDWIDTH_1_95_HZ: Serial.println("1.95 Hz"); break;
     case MSA301_BANDWIDTH_3_9_HZ: Serial.println("3.9 Hz"); break;
     case MSA301_BANDWIDTH_7_81_HZ: Serial.println("7.81 Hz"); break;
