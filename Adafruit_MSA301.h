@@ -44,6 +44,8 @@ I2C ADDRESS/BITS
 #define MSA301_REG_POWERMODE     0x11
 #define MSA301_REG_INTSET0       0x16
 #define MSA301_REG_INTSET1       0x17
+#define MSA301_REG_INTMAP0       0x19
+#define MSA301_REG_INTMAP1       0x1A
 #define MSA301_REG_TAPDUR        0x2A
 #define MSA301_REG_TAPTH         0x2B
 
@@ -147,6 +149,8 @@ class Adafruit_MSA301 : public Adafruit_Sensor {
   void enableInterrupts(bool singletap=false, bool doubletap=false,
 			bool activeX=false, bool activeY=false, bool activeZ=false,
 			bool newData=false, bool freefall=false, bool orient=false);
+  void mapInterruptPin(bool singletap=false, bool doubletap=false, bool activity=false, 
+		    bool newData=false, bool freefall=false, bool orient=false);
   
   uint8_t getClick(void);
   uint8_t getMotionInterruptStatus(void) ;

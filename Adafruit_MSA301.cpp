@@ -281,9 +281,9 @@ uint8_t Adafruit_MSA301::getClick(void) {
   return ClickStatus.read();
 }
 
-void Adafruit_MSA301::enableInterrupts(bool orient, bool singletap, bool doubletap,
+void Adafruit_MSA301::enableInterrupts(bool singletap, bool doubletap,
 				       bool activeX, bool activeY, bool activeZ,
-				       bool newData, bool freefall) {
+				       bool newData, bool freefall, bool orient) {
   Adafruit_BusIO_Register IntSet0 = 
     Adafruit_BusIO_Register(i2c_dev, MSA301_REG_INTSET0, 1);
   Adafruit_BusIO_Register IntSet1 = 
@@ -300,6 +300,23 @@ void Adafruit_MSA301::enableInterrupts(bool orient, bool singletap, bool doublet
   irqs |= newData << 4;
   irqs |= freefall << 3;
   IntSet1.write(irqs);
+}
+
+void Adafruit_MSA301::mapInterruptPin(bool singletap, bool doubletap, bool activity, 
+				   bool newData, bool freefall, bool orient) {
+  Adafruit_BusIO_Register IntMap0 = 
+    Adafruit_BusIO_Register(i2c_dev, MSA301_REG_INTMAP0, 1);
+  Adafruit_BusIO_Register IntMap1 = 
+    Adafruit_BusIO_Register(i2c_dev, MSA301_REG_INTMAP1, 1);
+  uint8_t irqs = 0;
+  irqs |= orient << 6;
+  irqs |= singletap << 5;
+  irqs |= doubletap << 4;
+  irqs |= activity << 2;
+  irqs |= freefall << 0;
+  IntMap0.write(irqs);
+  irqs = newData << 0;
+  IntMap1.write(irqs);
 }
 
 uint8_t Adafruit_MSA301::getMotionInterruptStatus(void) {
