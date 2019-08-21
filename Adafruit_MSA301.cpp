@@ -2,7 +2,6 @@
 /*!
     @file     Adafruit_MSA301.cpp
     @author   Limor Fried (Adafruit Industries)
-    @license  BSD (see license.txt)
 
     This is a library for the Adafruit MSA301 Accel breakout board
     ----> https://www.adafruit.com
@@ -11,6 +10,8 @@
     please support Adafruit and open-source hardware by purchasing
     products from Adafruit!
 
+    @section license License
+    BSD license, all text here must be included in any redistribution.
 */
 /**************************************************************************/
 
@@ -89,6 +90,8 @@ bool Adafruit_MSA301::begin(uint8_t i2c_address, TwoWire *wire) {
 /**************************************************************************/
 /*!
     @brief  Sets the data rate for the MSA301 (controls power consumption)
+    from 1 Hz to 1000Hz
+    @param dataRate Enumerated msa301_dataRate_t
 */
 /**************************************************************************/
 void Adafruit_MSA301::setDataRate(msa301_dataRate_t dataRate) {
@@ -101,7 +104,8 @@ void Adafruit_MSA301::setDataRate(msa301_dataRate_t dataRate) {
 
 /**************************************************************************/
 /*!
-    @brief  Sets the data rate for the MSA301 (controls power consumption)
+    @brief  Gets the data rate for the MSA301 (controls power consumption)
+    @return Enumerated msa301_dataRate_t from 1 Hz to 1000Hz
 */
 /**************************************************************************/
 msa301_dataRate_t Adafruit_MSA301::getDataRate(void) {
@@ -112,6 +116,14 @@ msa301_dataRate_t Adafruit_MSA301::getDataRate(void) {
   return (msa301_dataRate_t)dataratebits.read();
 }
 
+/**************************************************************************/
+/*!
+    @brief  What axes of the accelerometer we want enabled for reading
+    @param enableX True to enable X axis
+    @param enableY True to enable Y axis
+    @param enableZ True to enable Z axis
+*/
+/**************************************************************************/
 void Adafruit_MSA301::enableAxes(bool enableX, bool enableY, bool enableZ) {
   Adafruit_BusIO_Register ODR =
       Adafruit_BusIO_Register(i2c_dev, MSA301_REG_ODR, 1);
@@ -124,6 +136,13 @@ void Adafruit_MSA301::enableAxes(bool enableX, bool enableY, bool enableZ) {
   z.write(!enableZ);
 }
 
+/**************************************************************************/
+/*!
+    @brief Set the power mode, MSA301_NORMALMODE, MSA301_LOWPOWERMODE or 
+    MSA301_SUSPENDMODE
+    @param mode Enumerated msa301_powermode_t
+*/
+/**************************************************************************/
 void Adafruit_MSA301::setPowerMode(msa301_powermode_t mode) {
   Adafruit_BusIO_Register PowerMode =
       Adafruit_BusIO_Register(i2c_dev, MSA301_REG_POWERMODE, 1);
@@ -132,6 +151,13 @@ void Adafruit_MSA301::setPowerMode(msa301_powermode_t mode) {
   powermodebits.write((uint8_t)mode);
 }
 
+/**************************************************************************/
+/*!
+    @brief Get the power mode
+    @returns Enumerated msa301_powermode_t, MSA301_NORMALMODE, MSA301_LOWPOWERMODE or 
+    MSA301_SUSPENDMODE
+*/
+/**************************************************************************/
 msa301_powermode_t Adafruit_MSA301::getPowerMode(void) {
   Adafruit_BusIO_Register PowerMode =
       Adafruit_BusIO_Register(i2c_dev, MSA301_REG_POWERMODE, 1);
@@ -140,6 +166,13 @@ msa301_powermode_t Adafruit_MSA301::getPowerMode(void) {
   return (msa301_powermode_t)powermodebits.read();
 }
 
+
+/**************************************************************************/
+/*!
+    @brief Set the bandwidth, ranges from 1.95Hz to 500Hz
+    @param bandwidth Enumerated msa301_range_t
+*/
+/**************************************************************************/
 void Adafruit_MSA301::setBandwidth(msa301_bandwidth_t bandwidth) {
   Adafruit_BusIO_Register PowerMode =
       Adafruit_BusIO_Register(i2c_dev, MSA301_REG_POWERMODE, 1);
@@ -148,6 +181,13 @@ void Adafruit_MSA301::setBandwidth(msa301_bandwidth_t bandwidth) {
   bandwidthbits.write((uint8_t)bandwidth);
 }
 
+
+/**************************************************************************/
+/*!
+    @brief Get the bandwidth
+    @return Enumerated msa301_bandwidth_t, ranges from 1.95Hz to 500Hz
+*/
+/**************************************************************************/
 msa301_bandwidth_t Adafruit_MSA301::getBandwidth(void) {
   Adafruit_BusIO_Register PowerMode =
       Adafruit_BusIO_Register(i2c_dev, MSA301_REG_POWERMODE, 1);
@@ -158,7 +198,8 @@ msa301_bandwidth_t Adafruit_MSA301::getBandwidth(void) {
 
 /**************************************************************************/
 /*!
-    @brief  Sets the g range for the accelerometer
+    @brief Set the resolution range: +-2g, 4g, 8g, or 16g.
+    @param range Enumerated msa301_range_t
 */
 /**************************************************************************/
 void Adafruit_MSA301::setRange(msa301_range_t range) {
@@ -171,7 +212,8 @@ void Adafruit_MSA301::setRange(msa301_range_t range) {
 
 /**************************************************************************/
 /*!
-    @brief  Gets the g range for the accelerometer
+    @brief Read the resolution range: +-2g, 4g, 8g, or 16g.
+    @returns Enumerated msa301_range_t
 */
 /**************************************************************************/
 msa301_range_t Adafruit_MSA301::getRange(void) {
@@ -184,7 +226,8 @@ msa301_range_t Adafruit_MSA301::getRange(void) {
 
 /**************************************************************************/
 /*!
-    @brief
+    @brief Set the resolution - 8, 10, 12, or 14bits
+    @param resolution Enumerated msa301_resolution_t
 */
 /**************************************************************************/
 void Adafruit_MSA301::setResolution(msa301_resolution_t resolution) {
@@ -197,7 +240,8 @@ void Adafruit_MSA301::setResolution(msa301_resolution_t resolution) {
 
 /**************************************************************************/
 /*!
-    @brief
+    @brief Read the resolution - 8, 10, 12, or 14bits
+    @returns Enumerated msa301_resolution_t
 */
 /**************************************************************************/
 msa301_resolution_t Adafruit_MSA301::getResolution(void) {
@@ -207,6 +251,13 @@ msa301_resolution_t Adafruit_MSA301::getResolution(void) {
       Adafruit_BusIO_RegisterBits(&ResRange, 2, 2);
   return (msa301_resolution_t)resbits.read();
 }
+
+/**************************************************************************/
+/*!
+  @brief  Read the XYZ data from the accelerometer and store in the internal
+  x, y and z (and x_g, y_g, z_g) member variables.
+*/
+/**************************************************************************/
 
 void Adafruit_MSA301::read(void) {
   uint8_t buffer[6];
@@ -384,7 +435,8 @@ uint8_t Adafruit_MSA301::getDataInterruptStatus(void) {
 /**************************************************************************/
 /*!
     @brief  Gets the most recent sensor event, Adafruit Unified Sensor format
-    @param  sensor Pointer to an Adafruit Unified sensor_event_t object that we'll fill in
+    @param  event Pointer to an Adafruit Unified sensor_event_t object that we'll fill in
+    @returns True on successful read
 */
 /**************************************************************************/
 bool Adafruit_MSA301::getEvent(sensors_event_t *event) {
