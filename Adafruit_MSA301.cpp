@@ -138,7 +138,7 @@ void Adafruit_MSA301::enableAxes(bool enableX, bool enableY, bool enableZ) {
 
 /**************************************************************************/
 /*!
-    @brief Set the power mode, MSA301_NORMALMODE, MSA301_LOWPOWERMODE or 
+    @brief Set the power mode, MSA301_NORMALMODE, MSA301_LOWPOWERMODE or
     MSA301_SUSPENDMODE
     @param mode Enumerated msa301_powermode_t
 */
@@ -154,7 +154,8 @@ void Adafruit_MSA301::setPowerMode(msa301_powermode_t mode) {
 /**************************************************************************/
 /*!
     @brief Get the power mode
-    @returns Enumerated msa301_powermode_t, MSA301_NORMALMODE, MSA301_LOWPOWERMODE or 
+    @returns Enumerated msa301_powermode_t, MSA301_NORMALMODE,
+   MSA301_LOWPOWERMODE or
     MSA301_SUSPENDMODE
 */
 /**************************************************************************/
@@ -165,7 +166,6 @@ msa301_powermode_t Adafruit_MSA301::getPowerMode(void) {
       Adafruit_BusIO_RegisterBits(&PowerMode, 2, 6);
   return (msa301_powermode_t)powermodebits.read();
 }
-
 
 /**************************************************************************/
 /*!
@@ -180,7 +180,6 @@ void Adafruit_MSA301::setBandwidth(msa301_bandwidth_t bandwidth) {
       Adafruit_BusIO_RegisterBits(&PowerMode, 4, 1);
   bandwidthbits.write((uint8_t)bandwidth);
 }
-
 
 /**************************************************************************/
 /*!
@@ -299,7 +298,8 @@ void Adafruit_MSA301::read(void) {
   @param  tap_quiet TAP_QUIET flag (check datasheet for details)
   @param  tap_shock TAP_SHOCK flag (check datasheet for details)
   @param  tapduration How long to listen for a tap (check datasheet for details)
-  @param  tapthresh How strong the tap signal has to be (check datasheet for details)
+  @param  tapthresh How strong the tap signal has to be (check datasheet for
+  details)
 */
 /**************************************************************************/
 
@@ -328,7 +328,8 @@ void Adafruit_MSA301::setClick(bool tap_quiet, bool tap_shock,
 /**************************************************************************/
 /*!
     @brief  Gets the most recent click detect status register value
-    @returns 8 bits of interrupt status, check datasheet for what CLICKSTATUS bits are
+    @returns 8 bits of interrupt status, check datasheet for what CLICKSTATUS
+   bits are
 */
 /**************************************************************************/
 uint8_t Adafruit_MSA301::getClick(void) {
@@ -403,11 +404,11 @@ void Adafruit_MSA301::mapInterruptPin(bool singletap, bool doubletap,
   IntMap1.write(irqs);
 }
 
-
 /**************************************************************************/
 /*!
     @brief  Gets the most recent motion interrupt status register value
-    @returns 8 bits of interrupt status, check datasheet for what MOTION bits are
+    @returns 8 bits of interrupt status, check datasheet for what MOTION bits
+   are
 */
 /**************************************************************************/
 
@@ -421,7 +422,8 @@ uint8_t Adafruit_MSA301::getMotionInterruptStatus(void) {
 /**************************************************************************/
 /*!
     @brief  Gets the most recent data interrupt status register value
-    @returns 8 bits of interrupt status, check datasheet for what DATAINT bits are
+    @returns 8 bits of interrupt status, check datasheet for what DATAINT bits
+   are
 */
 /**************************************************************************/
 
@@ -435,7 +437,8 @@ uint8_t Adafruit_MSA301::getDataInterruptStatus(void) {
 /**************************************************************************/
 /*!
     @brief  Gets the most recent sensor event, Adafruit Unified Sensor format
-    @param  event Pointer to an Adafruit Unified sensor_event_t object that we'll fill in
+    @param  event Pointer to an Adafruit Unified sensor_event_t object that
+   we'll fill in
     @returns True on successful read
 */
 /**************************************************************************/
@@ -460,7 +463,8 @@ bool Adafruit_MSA301::getEvent(sensors_event_t *event) {
 /**************************************************************************/
 /*!
     @brief  Gets the sensor_t device data, Adafruit Unified Sensor format
-    @param  sensor Pointer to an Adafruit Unified sensor_t object that we'll fill in
+    @param  sensor Pointer to an Adafruit Unified sensor_t object that we'll
+   fill in
 */
 /**************************************************************************/
 void Adafruit_MSA301::getSensor(sensor_t *sensor) {
