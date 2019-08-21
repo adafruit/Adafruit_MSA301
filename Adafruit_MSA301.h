@@ -163,8 +163,12 @@ public:
 
   */
 
-  int16_t x, y, z;
-  float x_g, y_g, z_g;
+  int16_t x,  ///< The last read X acceleration in raw units
+    y,        ///< The last read Y acceleration in raw units
+    z;        ///< The last read Z acceleration in raw units
+  float x_g, ///< The last read X acceleration in 'g'
+    y_g,     ///< The last read Y acceleration in 'g'
+    z_g;     ///< The last read X acceleration in 'g'
 
 private:
   Adafruit_I2CDevice *i2c_dev;

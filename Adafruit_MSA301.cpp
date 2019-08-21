@@ -244,7 +244,11 @@ void Adafruit_MSA301::read(void) {
 
 /**************************************************************************/
 /*!
-    @brief  Set INT to output for single or double click
+  @brief  Set the click detection register thresholds
+  @param  tap_quiet TAP_QUIET flag (check datasheet for details)
+  @param  tap_shock TAP_SHOCK flag (check datasheet for details)
+  @param  tapduration How long to listen for a tap (check datasheet for details)
+  @param  tapthresh How strong the tap signal has to be (check datasheet for details)
 */
 /**************************************************************************/
 
@@ -270,6 +274,12 @@ void Adafruit_MSA301::setClick(bool tap_quiet, bool tap_shock,
   threshbits.write(tapthresh);
 }
 
+/**************************************************************************/
+/*!
+    @brief  Gets the most recent click detect status register value
+    @returns 8 bits of interrupt status, check datasheet for what CLICKSTATUS bits are
+*/
+/**************************************************************************/
 uint8_t Adafruit_MSA301::getClick(void) {
   Adafruit_BusIO_Register ClickStatus =
       Adafruit_BusIO_Register(i2c_dev, MSA301_REG_CLICKSTATUS, 1);
@@ -277,6 +287,19 @@ uint8_t Adafruit_MSA301::getClick(void) {
   return ClickStatus.read();
 }
 
+/**************************************************************************/
+/*!
+    @brief  Set which interrupts are enabled
+    @param singletap Whether to trigger INT on single tap interrupt
+    @param doubletap Whether to trigger INT on double tap interrupt
+    @param activeX Whether to trigger INT on X axis activity interrupt
+    @param activeY Whether to trigger INT on Y axis activity interrupt
+    @param activeZ Whether to trigger INT on Z axis activity interrupt
+    @param newData Whether to trigger INT on new data available interrupt
+    @param freefall Whether to trigger INT on freefall interrupt
+    @param orient Whether to trigger INT on orientation interrupt
+*/
+/**************************************************************************/
 void Adafruit_MSA301::enableInterrupts(bool singletap, bool doubletap,
                                        bool activeX, bool activeY, bool activeZ,
                                        bool newData, bool freefall,
@@ -299,6 +322,18 @@ void Adafruit_MSA301::enableInterrupts(bool singletap, bool doubletap,
   IntSet1.write(irqs);
 }
 
+/**************************************************************************/
+/*!
+    @brief  Set which interrupts are mapped to the INT pin
+    @param singletap Whether to trigger INT on single tap interrupt
+    @param doubletap Whether to trigger INT on double tap interrupt
+    @param activity Whether to trigger INT on activity interrupt
+    @param newData Whether to trigger INT on new data available interrupt
+    @param freefall Whether to trigger INT on freefall interrupt
+    @param orient Whether to trigger INT on orientation interrupt
+*/
+/**************************************************************************/
+
 void Adafruit_MSA301::mapInterruptPin(bool singletap, bool doubletap,
                                       bool activity, bool newData,
                                       bool freefall, bool orient) {
@@ -317,12 +352,27 @@ void Adafruit_MSA301::mapInterruptPin(bool singletap, bool doubletap,
   IntMap1.write(irqs);
 }
 
+
+/**************************************************************************/
+/*!
+    @brief  Gets the most recent motion interrupt status register value
+    @returns 8 bits of interrupt status, check datasheet for what MOTION bits are
+*/
+/**************************************************************************/
+
 uint8_t Adafruit_MSA301::getMotionInterruptStatus(void) {
   Adafruit_BusIO_Register IntStatus =
       Adafruit_BusIO_Register(i2c_dev, MSA301_REG_MOTIONINT, 1);
 
   return IntStatus.read();
 }
+
+/**************************************************************************/
+/*!
+    @brief  Gets the most recent data interrupt status register value
+    @returns 8 bits of interrupt status, check datasheet for what DATAINT bits are
+*/
+/**************************************************************************/
 
 uint8_t Adafruit_MSA301::getDataInterruptStatus(void) {
   Adafruit_BusIO_Register IntStatus =
@@ -333,7 +383,8 @@ uint8_t Adafruit_MSA301::getDataInterruptStatus(void) {
 
 /**************************************************************************/
 /*!
-    @brief  Gets the most recent sensor event
+    @brief  Gets the most recent sensor event, Adafruit Unified Sensor format
+    @param  sensor Pointer to an Adafruit Unified sensor_event_t object that we'll fill in
 */
 /**************************************************************************/
 bool Adafruit_MSA301::getEvent(sensors_event_t *event) {
@@ -356,7 +407,8 @@ bool Adafruit_MSA301::getEvent(sensors_event_t *event) {
 
 /**************************************************************************/
 /*!
-    @brief  Gets the sensor_t data
+    @brief  Gets the sensor_t device data, Adafruit Unified Sensor format
+    @param  sensor Pointer to an Adafruit Unified sensor_t object that we'll fill in
 */
 /**************************************************************************/
 void Adafruit_MSA301::getSensor(sensor_t *sensor) {
