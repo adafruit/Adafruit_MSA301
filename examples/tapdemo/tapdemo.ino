@@ -21,23 +21,22 @@ void setup() {
   msa.setRange(MSA301_RANGE_2_G);
   msa.setResolution(MSA301_RESOLUTION_14 );
   msa.setClick(false, false, MSA301_TAPDUR_250_MS, 25);
-  msa.enableInterrupts(true, true, true, true, true);  // enable single/double and xyz activity
+  msa.enableInterrupts(true, true);  // enable single/double tap
 }
 
 void loop() {
-  uint8_t clickstat = msa.getClick();
-  if (clickstat) {
-    Serial.print("Click = 0x"); Serial.println(clickstat, HEX);
-  }
+
   uint8_t motionstat = msa.getMotionInterruptStatus();
   if (motionstat) {
-    Serial.print("Motion IRQ = 0x"); Serial.println(motionstat, HEX);
+    Serial.print("Tap detected (0x"); Serial.print(motionstat, HEX); Serial.println(")");
     if (motionstat & (1<<5)) {
       Serial.println("\t***Single tap");
     }
     if (motionstat & (1<<4)) {
       Serial.println("\t***Double tap");
     }
+    Serial.println("");
   }
   delay(10);
+
 }
