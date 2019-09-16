@@ -5,8 +5,8 @@ Adafruit_MSA301 [![Build Status](https://travis-ci.com/adafruit/Adafruit_MSA301.
 
 This is the Adafruit MSA301 Accelerometer library
 
-Tested and works great with the Adafruit DS3502 Breakout Board 
-* http://www.adafruit.com/products
+Tested and works great with the Adafruit MSA301 Breakout Board
+* https://www.adafruit.com/product/4344
 
 This chip uses I2C to communicate, 2 pins are required to interface
 

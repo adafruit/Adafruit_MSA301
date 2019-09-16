@@ -297,7 +297,7 @@ void Adafruit_MSA301::read(void) {
   @brief  Set the click detection register thresholds
   @param  tap_quiet TAP_QUIET flag (check datasheet for details)
   @param  tap_shock TAP_SHOCK flag (check datasheet for details)
-  @param  tapduration How long to listen for a tap (check datasheet for details)
+  @param  tapduration How long to listen for a second tap (check datasheet for details)
   @param  tapthresh How strong the tap signal has to be (check datasheet for
   details)
 */
@@ -324,7 +324,7 @@ void Adafruit_MSA301::setClick(bool tap_quiet, bool tap_shock,
       Adafruit_BusIO_RegisterBits(&TapTh, 5, 0);
   threshbits.write(tapthresh);
 }
-
+3
 /**************************************************************************/
 /*!
     @brief  Gets the most recent click detect status register value

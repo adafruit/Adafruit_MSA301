@@ -20,6 +20,7 @@ void setup() {
   msa.setBandwidth(MSA301_BANDWIDTH_500_HZ);
   msa.setRange(MSA301_RANGE_2_G);
   msa.setResolution(MSA301_RESOLUTION_14 );
+
   msa.setClick(false, false, MSA301_TAPDUR_250_MS, 25);
   msa.enableInterrupts(true, true);  // enable single/double tap
 }
