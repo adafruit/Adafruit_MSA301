@@ -324,7 +324,7 @@ void Adafruit_MSA301::setClick(bool tap_quiet, bool tap_shock,
       Adafruit_BusIO_RegisterBits(&TapTh, 5, 0);
   threshbits.write(tapthresh);
 }
-3
+
 /**************************************************************************/
 /*!
     @brief  Gets the most recent click detect status register value
