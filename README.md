@@ -1,5 +1,5 @@
-Adafruit_MSA301 [![Build Status](https://travis-ci.com/adafruit/Adafruit_MSA301.svg?branch=master)](https://travis-ci.com/adafruit/Adafruit_MSA301)
-================
+# Adafruit MSA301 [![Build Status](https://github.com/adafruit/Adafruit_MSA301/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_MSA301/actions)
+
 
 <a href="https://www.adafruit.com/products"><img src="assets/board.jpg?raw=true" width="500px"></a>
 
