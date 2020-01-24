@@ -1,6 +1,5 @@
 # Adafruit MSA301 [![Build Status](https://github.com/adafruit/Adafruit_MSA301/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_MSA301/actions)
 
-
 <a href="https://www.adafruit.com/products"><img src="assets/board.jpg?raw=true" width="500px"></a>
 
 This is the Adafruit MSA301 Accelerometer library
