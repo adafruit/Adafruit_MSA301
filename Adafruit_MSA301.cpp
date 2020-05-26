@@ -1,19 +1,26 @@
-/**************************************************************************/
 /*!
-    @file     Adafruit_MSA301.cpp
-    @author   Limor Fried (Adafruit Industries)
-
-    This is a library for the Adafruit MSA301 Accel breakout board
-    ----> https://www.adafruit.com
-
-    Adafruit invests time and resources providing this open source code,
-    please support Adafruit and open-source hardware by purchasing
-    products from Adafruit!
-
-    @section license License
-    BSD license, all text here must be included in any redistribution.
-*/
-/**************************************************************************/
+ * @file     Adafruit_MSA301.cpp
+ *
+ * @mainpage Adafruit MSA301 Accelerometer Breakout
+ *
+ * @section intro_sec Introduction
+ *
+ * This is a library for the Adafruit MSA301 Accel breakout board
+ * ----> https://www.adafruit.com
+ *
+ * Adafruit invests time and resources providing this open source code,
+ * please support Adafruit and open-source hardware by purchasing
+ * products from Adafruit!
+ *
+ * @section author Author
+ *
+ * Limor Fried (Adafruit Industries)
+ *
+ * @section license License
+ *
+ * BSD license, all text here must be included in any redistribution.
+ *
+ */
 
 #if ARDUINO >= 100
 #include "Arduino.h"

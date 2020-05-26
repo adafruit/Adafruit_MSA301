@@ -1,17 +1,6 @@
-/**************************************************************************/
 /*!
-    @file     Adafruit_MSA301.h
-    @author   Limor Fried (Adafruit Industries)
-
-    This is a library for the Adafruit MSA301 Accel breakout board
-    ----> https://www.adafruit.com/
-
-    Adafruit invests time and resources providing this open source code,
-    please support Adafruit and open-source hardware by purchasing
-    products from Adafruit!
-
-*/
-/**************************************************************************/
+ * @file     Adafruit_MSA301.h
+ */
 
 #ifndef ADAFRUIT_MSA301_H
 #define ADAFRUIT_MSA301_H
