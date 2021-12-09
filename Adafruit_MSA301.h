@@ -14,6 +14,7 @@
 I2C ADDRESS/BITS
 -----------------------------------------------------------------------*/
 #define MSA301_I2CADDR_DEFAULT (0x26) ///< Fixed I2C address
+#define MSA311_I2CADDR_DEFAULT (0x62) ///< Fixed I2C address
 /*=========================================================================*/
 
 #define MSA301_REG_PARTID 0x01    ///< Register that contains the part ID
@@ -171,6 +172,14 @@ private:
   Adafruit_I2CDevice *i2c_dev;
 
   int32_t _sensorID;
+};
+
+
+/** Class for hardware interfacing with an MSA311 accelerometer */
+class Adafruit_MSA311 : public Adafruit_MSA301 {
+public:
+  Adafruit_MSA311(void);
+  bool begin(uint8_t i2c_addr = MSA311_I2CADDR_DEFAULT, TwoWire *wire = &Wire);
 };
 
 #endif

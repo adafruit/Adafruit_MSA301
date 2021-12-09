@@ -22,14 +22,7 @@
  *
  */
 
-#if ARDUINO >= 100
-#include "Arduino.h"
-#else
-#include "WProgram.h"
-#endif
-
 #include <Adafruit_MSA301.h>
-#include <Wire.h>
 
 /**************************************************************************/
 /*!
@@ -37,6 +30,25 @@
 */
 /**************************************************************************/
 Adafruit_MSA301::Adafruit_MSA301() {}
+
+/**************************************************************************/
+/*!
+    @brief  Instantiates a new MSA311 class
+*/
+/**************************************************************************/
+Adafruit_MSA311::Adafruit_MSA311() {}
+
+/*!
+ *    @brief  Sets up the hardware and initializes I2C
+ *    @param  i2c_address
+ *            The I2C address to be used.
+ *    @param  wire
+ *            The Wire object to be used for I2C connections.
+ *    @return True if initialization was successful, otherwise false.
+ */
+bool Adafruit_MSA311::begin(uint8_t i2c_address, TwoWire *wire) {
+  return Adafruit_MSA301::begin(i2c_address, wire);
+}
 
 /*!
  *    @brief  Sets up the hardware and initializes I2C
