@@ -174,7 +174,6 @@ private:
   int32_t _sensorID;
 };
 
-
 /** Class for hardware interfacing with an MSA311 accelerometer */
 class Adafruit_MSA311 : public Adafruit_MSA301 {
 public:
