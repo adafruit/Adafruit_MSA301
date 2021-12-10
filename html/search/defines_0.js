@@ -19,5 +19,6 @@ var searchData=
   ['msa301_5freg_5fpowermode',['MSA301_REG_POWERMODE',['../_adafruit___m_s_a301_8h.html#a8cceee05c54dc9d8e536ed0fee010faf',1,'Adafruit_MSA301.h']]],
   ['msa301_5freg_5fresrange',['MSA301_REG_RESRANGE',['../_adafruit___m_s_a301_8h.html#ad69c0a18354069371d1fbcf60894cdba',1,'Adafruit_MSA301.h']]],
   ['msa301_5freg_5ftapdur',['MSA301_REG_TAPDUR',['../_adafruit___m_s_a301_8h.html#a580a5b8c50e994f74d32b61bd78381c9',1,'Adafruit_MSA301.h']]],
-  ['msa301_5freg_5ftapth',['MSA301_REG_TAPTH',['../_adafruit___m_s_a301_8h.html#ab809c6a478507106242e24ff2684b6d1',1,'Adafruit_MSA301.h']]]
+  ['msa301_5freg_5ftapth',['MSA301_REG_TAPTH',['../_adafruit___m_s_a301_8h.html#ab809c6a478507106242e24ff2684b6d1',1,'Adafruit_MSA301.h']]],
+  ['msa311_5fi2caddr_5fdefault',['MSA311_I2CADDR_DEFAULT',['../_adafruit___m_s_a301_8h.html#a3dfc3a1ab2900817f7ab7e7cd0f32f74',1,'Adafruit_MSA301.h']]]
 ];
