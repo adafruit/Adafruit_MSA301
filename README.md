@@ -1,11 +1,12 @@
-# Adafruit MSA301 [![Build Status](https://github.com/adafruit/Adafruit_MSA301/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_MSA301/actions)[![Documentation](https://github.com/adafruit/ci-arduino/blob/master/assets/doxygen_badge.svg)](http://adafruit.github.io/Adafruit_MSA301/html/index.html)
+# Adafruit MSA301/MSA311 [![Build Status](https://github.com/adafruit/Adafruit_MSA301/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_MSA301/actions)[![Documentation](https://github.com/adafruit/ci-arduino/blob/master/assets/doxygen_badge.svg)](http://adafruit.github.io/Adafruit_MSA301/html/index.html)
 
 <a href="https://www.adafruit.com/products"><img src="assets/board.jpg?raw=true" width="500px"></a>
 
-This is the Adafruit MSA301 Accelerometer library
+This is the Adafruit MSA301/MSA311 Accelerometer library
 
-Tested and works great with the Adafruit MSA301 Breakout Board
-* https://www.adafruit.com/product/4344
+Tested and works great with the 
+* [Adafruit MSA301 Breakout Board](https://www.adafruit.com/product/4344)
+* [Adafruit MSA311 Triple Axis Accelerometer](https://www.adafruit.com/product/5309)
 
 This chip uses I2C to communicate, 2 pins are required to interface
 
