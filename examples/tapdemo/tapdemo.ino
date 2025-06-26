@@ -1,8 +1,12 @@
-// Basic demo for tap/doubletap readings from Adafruit MSA301
+// Basic demo for tap/doubletap readings from Adafruit MSA301/311
 
 #include <Adafruit_MSA301.h>
 
-Adafruit_MSA301 msa;
+//
+// Comment/Uncomment as needed for specific MSA being used:
+//
+// Adafruit_MSA301 msa;
+Adafruit_MSA311 msa;
 
 void setup() {
   Serial.begin(115200);
@@ -10,10 +14,10 @@ void setup() {
 
   // Try to initialize!
   if (! msa.begin()) {
-    Serial.println("Failed to find MSA301 chip");
+    Serial.println("Failed to find MSA301/311 chip");
     while (1) { delay(10); }
   }
-  Serial.println("Found MSA301!");
+  Serial.println("Found MSA301/311!");
 
   msa.setPowerMode(MSA301_NORMALMODE);
   msa.setDataRate(MSA301_DATARATE_1000_HZ);
