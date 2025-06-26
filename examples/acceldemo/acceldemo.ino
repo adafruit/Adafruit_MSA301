@@ -1,23 +1,27 @@
-// Basic demo for accelerometer readings from Adafruit MSA301
+// Basic demo for accelerometer readings from Adafruit MSA301/311
 
 #include <Wire.h>
 #include <Adafruit_MSA301.h>
 #include <Adafruit_Sensor.h>
 
-Adafruit_MSA301 msa;
+//
+// Comment/Uncomment as needed for specific MSA being used:
+//
+// Adafruit_MSA301 msa;
+Adafruit_MSA311 msa;
 
 void setup(void) {
   Serial.begin(115200);
   while (!Serial) delay(10);     // will pause Zero, Leonardo, etc until serial console opens
 
-  Serial.println("Adafruit MSA301 test!");
-  
+  Serial.println("Adafruit MSA301/311 test!");
+
   // Try to initialize!
   if (! msa.begin()) {
-    Serial.println("Failed to find MSA301 chip");
+    Serial.println("Failed to find MSA301/311 chip");
     while (1) { delay(10); }
   }
-  Serial.println("MSA301 Found!");
+  Serial.println("MSA301/311 Found!");
 
   //msa.setDataRate(MSA301_DATARATE_31_25_HZ);
   Serial.print("Data rate set to: ");
@@ -79,22 +83,22 @@ void setup(void) {
 void loop() {
   msa.read();      // get X Y and Z data at once
   // Then print out the raw data
-  Serial.print("X:  "); Serial.print(msa.x); 
-  Serial.print("  \tY:  "); Serial.print(msa.y); 
-  Serial.print("  \tZ:  "); Serial.print(msa.z); 
-  delay(100); 
-  
-  /* Or....get a new sensor event, normalized */ 
-  sensors_event_t event; 
+  Serial.print("X:  "); Serial.print(msa.x);
+  Serial.print("  \tY:  "); Serial.print(msa.y);
+  Serial.print("  \tZ:  "); Serial.print(msa.z);
+  delay(100);
+
+  /* Or....get a new sensor event, normalized */
+  sensors_event_t event;
   msa.getEvent(&event);
-  
+
   /* Display the results (acceleration is measured in m/s^2) */
   Serial.print("\t\tX: "); Serial.print(event.acceleration.x);
-  Serial.print(" \tY: "); Serial.print(event.acceleration.y); 
-  Serial.print(" \tZ: "); Serial.print(event.acceleration.z); 
+  Serial.print(" \tY: "); Serial.print(event.acceleration.y);
+  Serial.print(" \tZ: "); Serial.print(event.acceleration.z);
   Serial.println(" m/s^2 ");
 
   Serial.println();
- 
-  delay(100); 
+
+  delay(100);
 }
